@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Encryptor || Ramses Landero</title>
+</head>
+<body>
+    <nav class="nav">
+        <h1>Encryptor</h1>
+        <h2>Oracle + Alura latam</h2>
+    </nav>
+    <div class="main-container" >
+        <form id="form"  class="ingreso" action="#" method="post">
+            
+            <textarea  class="entrada"  autocapitalize="none" autocomplete="off"  maxlength="500"  rows="8" cols="60" autofocus placeholder="Enter your text ..."></textarea>
+            <p class="warning" >
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="12" cy="12" r="9" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg> Solo letras minusculas y sin acentos
+            </p>
+
+            <div class="botones" >
+                <button class="execute first" type="submit">Encrypt</button>
+                <button class="execute second" type="button">Decrypt</button>
+            </div>
+        </form>
+        <div class="crypted" >
+            <div  class="crypted-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor, diam non rutrum malesuada, dui dui tincidunt lacus, vel posuere eros est at diam. Aliquam sed ipsum vel ipsum eleifend faucibus. Nulla sed nibh non arcu pellentesque tincidunt. In auctor, tellus quis accumsan volutpat, mauris metus ultricies tellus, vel porta mauris leo ut massa. Fusce consequat, arcu id feugiat suscipit, quam lacus congue tellus, quis pretium magna ante non diam. In ut suscipit dolor. Ut dignissim orci ligu </div>
+            <div class="crypted-button">
+                <button class="execute third" type="submit">Copy</button>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <footer>Made with ❤ by Ramses Landero</footer>
+    <script src="/app.js"></script>
+</body>
+</html>
