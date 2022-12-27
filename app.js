@@ -1,8 +1,13 @@
+import {  } from "module";
+
 const form       = document.getElementById('form'),
       message    = document.querySelector('.entrada'),
       btnEncrypt = document.querySelector('.first'),
       btnDecrypt = document.querySelector('.second'),
-      btnCopy    = document.querySelector('.third');
+      btnCopy    = document.querySelector('.third'),
+      finalMessage = document.querySelector('.crypted-text');
+
+finalMessage.innerHTML = muneco.svg
 
 const decode ={
     "a" : "ai",
@@ -12,36 +17,38 @@ const decode ={
     "u" : "ufat"
 };
 
-const wordKeys = Object.entries(decode);
+const compareArrays = ( letters ) => {
+    return letters.map( letter => {
+      return decode.hasOwnProperty( letter ) ? 
+      decode[ letter ] 
+      : letter;
+    });
+  }
 
 
-const getString =()=>{
-    text = message.value
-    !text ? 
-        alert( 'No message founded' ) : 
-        console.log( text.split("") );
-    return text.split("")
+const joinArrays = ( arrays ) => {
+  return arrays.join( "" );
 }
 
-const encrypt =()=>{
-    let arrayMessage = getString()
-    for (let index; index<arrayMessage.length; index++) {
-        
-        console.log(index);
-        console.log(wordKeys[index][0]);
-        // elem == wordKeys[elem][0]?  elem = decode[elem][1] : elem;
-        // console.log(elem);
-        }        
-    }
+const getString = () => {
+    text =  message.value
+    return !text ? 
+      alert("No message found")
+      : text.split(" ").map(word => {
+          const letters = word.split( "" );
+          const newWord = compareArrays( letters );
+          return joinArrays( newWord );
+        });
+  };
 
-    
-        
-    
+
 
 
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
-    encrypt()
+    const result = getString().join(" "); 
+    console.log(result);   
+    finalMessage.inner
 });
 
 

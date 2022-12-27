@@ -85,7 +85,7 @@ body{
     display: flex;
     /* margin-top: 1.3em; */
     justify-content: space-around;
-    padding: .3em;
+    
 }
 
 .execute{
@@ -99,6 +99,7 @@ body{
     background: transparent;
     color: azure;
     font-family: 'Kanit', sans-serif;
+    padding: .3em;
 }
  
 .first{
@@ -126,7 +127,26 @@ body{
     font-family: 'Bebas Neue', cursive;
     font-size: 25px;
     color: azure;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
+}
+
+.muneco{
+  height: 100vh;
+  margin: 15px;
+}
+
+.bold-text{
+  margin: 25px auto 10 auto;
+}
+
+
+.small-text{
+  font-weight: normal;
+  font-size: small;
+  margin-bottom: 20px;
 }
 
 .crypted-text{
