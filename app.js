@@ -17,14 +17,14 @@ const decode ={
 
 //va a ir al inicio de getString
 const checkRegex=(str)=> {
-  const regex = /[A-Z]+[^a-z]/gm;
-  if (regex.test(str)) {
-    console.log('La cadena cumple con el regex');
-    return str
-  } else {
-    let result="Solo letras mayusculas, sin acentos ni simbolos"
-    renderText(result)
-  }
+ const regex = /(\W+$|[0-9]|[A-Z])/;
+//  const regex = /^[a-z\s]*$/;
+ if (regex.test(str)) {
+   console.log('La cadena cumple con el regex');
+   return str
+ } else {
+   console.log('la cadena no cumple con el regex');
+ }
 }
 
 
@@ -95,6 +95,7 @@ const copyText =( )=>{
 
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
+    checkRegex(message.value)
     try {
       const result = getString('normal').join(" "); 
       console.log(result);   
@@ -108,6 +109,7 @@ btnEncrypt.addEventListener('click',e =>{
 
 btnDecrypt.addEventListener('click',e =>{
     e.preventDefault();
+    checkRegex(message.value)
     try {
       const result = getString('reverse').join(" "); 
     console.log(result);  
