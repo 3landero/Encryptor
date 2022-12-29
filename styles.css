@@ -60,7 +60,7 @@ body{
 .entrada{
     margin: 1em;
     font-family: 'Bebas Neue', cursive;
-    font-size: 25px;
+    font-size: 23px;
     color: azure;
     padding: 1em;
     background-color: transparent;
@@ -171,6 +171,10 @@ body{
 
 .medium-length{
   font-size: 19px;
+}
+
+.medium2-length{
+  font-size: 15px;
 }
 
 .large-length{

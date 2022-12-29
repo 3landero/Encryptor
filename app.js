@@ -16,6 +16,17 @@ const decode ={
     "u" : "ufat"
 };
 
+ console.log('hoberlai cobermober enterstais')
+
+const comparaLetra = (letters) =>{
+  letters=letters.replace(/ai/g,"a");
+  letters=letters.replace(/enter/g,"e");
+  letters=letters.replace(/imes/g,"i");
+  letters=letters.replace(/ober/g,"o");
+  letters=letters.replace(/ufat/g,"u");
+  return letters
+}
+
 const compareArrays = ( letters ) => {
     return letters.map( letter => {
       return decode.hasOwnProperty( letter ) ? 
@@ -25,29 +36,41 @@ const compareArrays = ( letters ) => {
   };
 
 
-const compareArraysReverse = ( letters ) => {
-  return letters.map( letter => {
-    return decode.values( letter ) ? 
-    decode[ letter ] 
-    : letter;
-  });
-};
 
 const joinArrays = ( arrays ) => {
   return arrays.join( "" );
-}
+};
 
-const getString =( )=> {
+
+
+const getString =( choice )=> {
     text =  message.value
     return !text ? 
-      alert("No message found")
-      : text.split(" ").map(word => {
-          const letters = word.split( "" );
-          const newWord = compareArrays( letters );
-          return joinArrays( newWord );
+      alert("No message found"): 
+      text.split(" ").map(word =>{
+        if( choice==='normal' ) {
+            const letters = word.split( "" );
+            newWord = compareArrays( letters );  
+            return joinArrays( newWord );
+          } else if(choice === 'reverse'){
+            newWord = comparaLetra( word );
+            console.log(newWord);
+            return newWord
+          } else{
+            console.log('invalid');
+          }
+
         });
 };
 
+const renderText=(result)=>{
+  let textLength = result.length <= 625?
+        "small-length": 
+            result.length <= 800 ? "medium2-length" :   
+            result.length <=1100? "medium2-length":   "large-length";
+
+    finalMessage.innerHTML = `<div  class="crypted-text ${textLength}">${result} </div>`
+}
 
 
 
@@ -61,25 +84,19 @@ const copyText =( )=>{
 
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
-    const result = getString().join(" "); 
+    const result = getString('normal').join(" "); 
     console.log(result);   
-    let textLength = result.length <= 625?
-        "small-length": 
-            result.length <= 1105 ? "medium-length"   :  "large-length";
-
-    finalMessage.innerHTML = `<div  class="crypted-text ${textLength}">${result} </div>
-    `
+    renderText(result)
 });
 
 
 btnDecrypt.addEventListener('click',e =>{
-    e.preventDefault();const result = getString().join(" "); 
+    e.preventDefault();
+    const result = getString('reverse').join(" "); 
     console.log(result);  
+    renderText(result)
+    
 });
-
-
-
-
 
 
 btnCopy.addEventListener('click', e =>{
