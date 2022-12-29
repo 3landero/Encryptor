@@ -118,52 +118,84 @@ body{
 .crypted{
     position: relative;
     margin: 0 auto;
+    padding: 30px;
     width: 40%;
+    height: 100%;
     background: rgba(255,255,255,0.3);
     border-radius: 20px;
-    padding: 30px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     font-family: 'Bebas Neue', cursive;
     font-size: 25px;
     color: azure;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+    flex-direction: column; 
+    align-items: center; 
+    padding-bottom: 10px; 
+        
 }
 
+
+
 .muneco{
-  height: 100vh;
+  height: 50vh;
   margin: 15px;
 }
 
-.bold-text{
-  margin: 25px auto 10 auto;
+.crypted-void{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+  
 }
 
-
-.small-text{
-  font-weight: normal;
-  font-size: small;
-  margin-bottom: 20px;
+.third{
+  /* position: relative; */
+  position: fixed;
+  top: 85.5%;
+  
 }
-
-.crypted-text{
-    height: 97.5%;
-}
-
-.crypted-button{
-    display: flex;
-    justify-content: center;
-}
-
 
 
 .third:hover{
     background: rgba(63, 191, 178, .5);
     
 }
+
+.small-length{
+  font-size: 25px;
+}
+
+.medium-length{
+  font-size: 19px;
+}
+
+.large-length{
+  font-size: 12px;
+}
+
+
+
+.bold-text{
+  margin: 25px auto 5 auto;
+}
+
+
+.small-text{
+  font-weight: normal;
+  font-size: 1rem;
+  
+}
+
+.crypted-text{
+    height: 97.5%;
+    word-break: break-all;
+    margin-bottom: 3em;
+}
+
 
 footer{
     margin: 0;

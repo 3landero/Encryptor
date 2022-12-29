@@ -1,13 +1,12 @@
-import {  } from "module";
 
 const form       = document.getElementById('form'),
       message    = document.querySelector('.entrada'),
       btnEncrypt = document.querySelector('.first'),
       btnDecrypt = document.querySelector('.second'),
-      btnCopy    = document.querySelector('.third'),
-      finalMessage = document.querySelector('.crypted-text');
+      finalMessage = document.querySelector('.crypted-void'),
+      btnCopy    = document.querySelector('.third');
 
-finalMessage.innerHTML = muneco.svg
+
 
 const decode ={
     "a" : "ai",
@@ -23,14 +22,22 @@ const compareArrays = ( letters ) => {
       decode[ letter ] 
       : letter;
     });
-  }
+  };
 
+
+const compareArraysReverse = ( letters ) => {
+  return letters.map( letter => {
+    return decode.values( letter ) ? 
+    decode[ letter ] 
+    : letter;
+  });
+};
 
 const joinArrays = ( arrays ) => {
   return arrays.join( "" );
 }
 
-const getString = () => {
+const getString =( )=> {
     text =  message.value
     return !text ? 
       alert("No message found")
@@ -39,7 +46,15 @@ const getString = () => {
           const newWord = compareArrays( letters );
           return joinArrays( newWord );
         });
-  };
+};
+
+
+
+
+const copyText =( )=>{
+  let text = document.querySelector(".crypted-text").innerText
+  navigator.clipboard.writeText(text)
+}
 
 
 
@@ -48,14 +63,32 @@ btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
     const result = getString().join(" "); 
     console.log(result);   
-    finalMessage.inner
+    let textLength = result.length <= 625?
+        "small-length": 
+            result.length <= 1105 ? "medium-length"   :  "large-length";
+
+    finalMessage.innerHTML = `<div  class="crypted-text ${textLength}">${result} </div>
+    `
 });
 
 
 btnDecrypt.addEventListener('click',e =>{
-    e.preventDefault();
-    console.log(message);
+    e.preventDefault();const result = getString().join(" "); 
+    console.log(result);  
 });
+
+
+
+
+
+
+btnCopy.addEventListener('click', e =>{
+  e.preventDefault();
+  copyText();
+});
+  // copyText();
+  // let text = document.querySelector( ".crypted-text" );
+  
 
 
 
