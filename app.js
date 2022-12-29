@@ -1,4 +1,3 @@
-
 const form       = document.getElementById('form'),
       message    = document.querySelector('.entrada'),
       btnEncrypt = document.querySelector('.first'),
@@ -16,7 +15,19 @@ const decode ={
     "u" : "ufat"
 };
 
- console.log('hoberlai cobermober enterstais')
+//va a ir al inicio de getString
+const checkRegex=(str)=> {
+  const regex = /[A-Z]+[^a-z]/gm;
+  if (regex.test(str)) {
+    console.log('La cadena cumple con el regex');
+    return str
+  } else {
+    let result="Solo letras mayusculas, sin acentos ni simbolos"
+    renderText(result)
+  }
+}
+
+
 
 const comparaLetra = (letters) =>{
   letters=letters.replace(/ai/g,"a");
@@ -44,24 +55,26 @@ const joinArrays = ( arrays ) => {
 
 
 const getString =( choice )=> {
-    text =  message.value
-    return !text ? 
-      alert("No message found"): 
-      text.split(" ").map(word =>{
-        if( choice==='normal' ) {
-            const letters = word.split( "" );
-            newWord = compareArrays( letters );  
-            return joinArrays( newWord );
-          } else if(choice === 'reverse'){
-            newWord = comparaLetra( word );
-            console.log(newWord);
-            return newWord
-          } else{
-            console.log('invalid');
-          }
+  text =  message.value
+  return !text ? 
+    alert("No message found"): 
+    text.split(" ").map(word =>{
+      if( choice==='normal' ) {
+          const letters = word.split( "" );
+          newWord = compareArrays( letters );  
+          return joinArrays( newWord );
+        } else if(choice === 'reverse'){
+          newWord = comparaLetra( word );
+          console.log(newWord);
+          return newWord
+        } else{
+          console.log('invalid');
+        }
 
-        });
+      });
 };
+    
+
 
 const renderText=(result)=>{
   let textLength = result.length <= 625?
@@ -80,21 +93,29 @@ const copyText =( )=>{
 }
 
 
-
-
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
-    const result = getString('normal').join(" "); 
-    console.log(result);   
-    renderText(result)
+    try {
+      const result = getString('normal').join(" "); 
+      console.log(result);   
+      renderText(result)  
+    } catch (error) {
+      console.log('empty text');
+    }
+    
 });
 
 
 btnDecrypt.addEventListener('click',e =>{
     e.preventDefault();
-    const result = getString('reverse').join(" "); 
+    try {
+      const result = getString('reverse').join(" "); 
     console.log(result);  
-    renderText(result)
+    renderText(result)  
+    } catch (error) {
+      console.log('empty text');
+    }
+    
     
 });
 
