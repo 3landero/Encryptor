@@ -100,14 +100,15 @@ btnEncrypt.addEventListener('click',e =>{
       if (validateMessage==false) {
         result = `Please: Enter only lowercase avoid numbers & symbols`
         renderText(result) 
+
       }else{
+
         const result = getString('normal').join(" "); 
         console.log(result);   
         renderText(result)  
-      }
-        
-      
+      }  
     } catch (error) {
+
       console.log('empty text');
     }
     
@@ -116,17 +117,25 @@ btnEncrypt.addEventListener('click',e =>{
 
 btnDecrypt.addEventListener('click',e =>{
     e.preventDefault();
-    checkRegex(message.value)
     try {
-      const result = getString('reverse').join(" "); 
-    console.log(result);  
-    renderText(result)  
+      validateMessage = checkRegex(message.value)
+      if (validateMessage==false) {
+        result = `Please: Enter only lowercase avoid numbers & symbols`
+        renderText(result) 
+
+      }else{
+
+        const result = getString('reverse').join(" "); 
+        console.log(result);   
+        renderText(result)  
+      }  
     } catch (error) {
+
       console.log('empty text');
     }
     
-    
 });
+
 
 
 btnCopy.addEventListener('click', e =>{

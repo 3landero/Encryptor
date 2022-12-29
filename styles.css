@@ -251,26 +251,30 @@ footer{
 /* Media queries para smartphone*/
 
 @media screen and (max-width: 450px) {
-    
+      body{
+        overflow: hidden;
+      }  
+
       .nav{
         font-size: 16px;
         justify-content: space-between;
         width: 100%;
+        overflow: hidden;
       }
 
       .main-container{
         display: block;
-        margin: 5px;
+        width: 96%;
       }
 
       .ingreso{
         margin: 1px;
-        width: 100%;
+        width: 98%;
         height: 50vh;
       }
 
       .entrada{
-        height: 35vh;
+        height: 30vh;
         font-size: 20px;
         padding: 1px;
       }
@@ -284,14 +288,16 @@ footer{
       }
       
       .crypted{
-        margin: 5px;
+        margin: 3px;
         margin-top: 15px;
-        width: 98%;
-        height: 36vh;
+        width: 97%;
+        height: 32vh;
         font-size: 20px;
         padding: 6px;
       }
-
+      .muneco{
+        display: none;
+      }
       .crypted-text{
         height: auto;
       }
@@ -303,11 +309,12 @@ footer{
       }
 
       .third{
-        margin-top: 1vh;
+        top: 90vh;
         
       }
 
       footer{
-        width: 100%;
+        width:  100%;
+        overflow: hidden;
       }
   }
