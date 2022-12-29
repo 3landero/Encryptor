@@ -15,18 +15,6 @@ const decode ={
     "u" : "ufat"
 };
 
-//va a ir al inicio de getString
-const checkRegex=(str)=> {
- const regex = /(\W+$|[0-9]|[A-Z])/;
-//  const regex = /^[a-z\s]*$/;
- if (regex.test(str)) {
-   console.log('La cadena cumple con el regex');
-   return str
- } else {
-   console.log('la cadena no cumple con el regex');
- }
-}
-
 
 
 const comparaLetra = (letters) =>{
@@ -85,7 +73,18 @@ const renderText=(result)=>{
     finalMessage.innerHTML = `<div  class="crypted-text ${textLength}">${result} </div>`
 }
 
-
+//va a ir al inicio de getString
+const checkRegex=(str)=> {
+  const regex = /(\W+$|[0-9]|[A-Záéíóú])/;
+ //  const regex = /^[a-z\s]*$/;
+  if (regex.test(str)) {
+    return false
+  } else {
+    console.log('Message valid');
+  }
+ }
+ 
+ 
 
 const copyText =( )=>{
   let text = document.querySelector(".crypted-text").innerText
@@ -95,11 +94,19 @@ const copyText =( )=>{
 
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
-    checkRegex(message.value)
+    
     try {
-      const result = getString('normal').join(" "); 
-      console.log(result);   
-      renderText(result)  
+      validateMessage = checkRegex(message.value)
+      if (validateMessage==false) {
+        result = `Please: Enter only lowercase avoid numbers & symbols`
+        renderText(result) 
+      }else{
+        const result = getString('normal').join(" "); 
+        console.log(result);   
+        renderText(result)  
+      }
+        
+      
     } catch (error) {
       console.log('empty text');
     }
