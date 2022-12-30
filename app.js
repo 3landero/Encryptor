@@ -70,7 +70,7 @@ const renderText=(result)=>{
             result.length <= 800 ? "medium2-length" :   
             result.length <=1100? "medium2-length":   "large-length";
 
-    finalMessage.innerHTML = `<div  class="crypted-text ${textLength}">${result} </div>`
+    finalMessage.innerHTML = `<div  class="crypted-text fade-in-fwd ${textLength}">${result} </div>`
 }
 
 //va a ir al inicio de getString
@@ -142,8 +142,7 @@ btnCopy.addEventListener('click', e =>{
   e.preventDefault();
   copyText();
 });
-  // copyText();
-  // let text = document.querySelector( ".crypted-text" );
+
   
 
 
