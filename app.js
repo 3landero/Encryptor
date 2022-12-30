@@ -94,7 +94,7 @@ const copyText =( )=>{
 
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
-    
+    // btnEncrypt.classList.add("scale-up-center")
     try {
       validateMessage = checkRegex(message.value)
       if (validateMessage==false) {
@@ -117,6 +117,7 @@ btnEncrypt.addEventListener('click',e =>{
 
 btnDecrypt.addEventListener('click',e =>{
     e.preventDefault();
+    // btnDecrypt.classList.add("scale-up-center")
     try {
       validateMessage = checkRegex(message.value)
       if (validateMessage==false) {
@@ -140,6 +141,7 @@ btnDecrypt.addEventListener('click',e =>{
 
 btnCopy.addEventListener('click', e =>{
   e.preventDefault();
+  // btnCopy.classList.add("scale-up-center")
   copyText();
 });
 
