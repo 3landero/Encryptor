@@ -1,3 +1,7 @@
+//-- patron modulo
+(()=>{ 
+
+//asignaciones
 const form       = document.getElementById('form'),
       message    = document.querySelector('.entrada'),
       btnEncrypt = document.querySelector('.first'),
@@ -16,7 +20,7 @@ const decode ={
 };
 
 
-
+//sirve para que del array de palabras se sustituyan los caracteres
 const comparaLetra = (letters) =>{
   letters=letters.replace(/ai/g,"a");
   letters=letters.replace(/enter/g,"e");
@@ -26,6 +30,7 @@ const comparaLetra = (letters) =>{
   return letters
 }
 
+//compara si las letras de la palabra son descifrables, si es asi las sustituye si no, deja la letra original
 const compareArrays = ( letters ) => {
     return letters.map( letter => {
       return decode.hasOwnProperty( letter ) ? 
@@ -35,13 +40,13 @@ const compareArrays = ( letters ) => {
   };
 
 
-
+//une caracteres de la palabra
 const joinArrays = ( arrays ) => {
   return arrays.join( "" );
 };
 
 
-
+//hace la labor de encriptar / desencriptar 
 const getString =( choice )=> {
   text =  message.value
   return !text ? 
@@ -53,7 +58,7 @@ const getString =( choice )=> {
           return joinArrays( newWord );
         } else if(choice === 'reverse'){
           newWord = comparaLetra( word );
-          console.log(newWord);
+          
           return newWord
         } else{
           console.log('invalid');
@@ -63,7 +68,7 @@ const getString =( choice )=> {
 };
     
 
-
+//renderiza el mensaje en el espacio del texto resultado
 const renderText=(result)=>{
   let textLength = result.length <= 625?
         "small-length": 
@@ -73,28 +78,30 @@ const renderText=(result)=>{
     finalMessage.innerHTML = `<div  class="crypted-text fade-in-fwd ${textLength}">${result} </div>`
 }
 
-//va a ir al inicio de getString
+//valida la entrada de texto para que no tenga: 
+//    mayusculas, simbolos, numeros, acentos
 const checkRegex=(str)=> {
+  originalString = str.trim()
   const regex = /(\W+$|[0-9]|[A-Záéíóú])/;
  //  const regex = /^[a-z\s]*$/;
-  if (regex.test(str)) {
+  if (regex.test(originalString)) {
     return false
-  } else {
-    console.log('Message valid');
-  }
+  } 
  }
  
  
-
+//funcion encargada de copiar texto a clipboard
 const copyText =( )=>{
   let text = document.querySelector(".crypted-text").innerText
   navigator.clipboard.writeText(text)
 }
 
 
+//----- Eventos de boton----->
+
+//boton encriptar
 btnEncrypt.addEventListener('click',e =>{
     e.preventDefault();
-    // btnEncrypt.classList.add("scale-up-center")
     try {
       validateMessage = checkRegex(message.value)
       if (validateMessage==false) {
@@ -104,7 +111,7 @@ btnEncrypt.addEventListener('click',e =>{
       }else{
 
         const result = getString('normal').join(" "); 
-        console.log(result);   
+        
         renderText(result)  
       }  
     } catch (error) {
@@ -115,9 +122,9 @@ btnEncrypt.addEventListener('click',e =>{
 });
 
 
+//--boton desencriptar
 btnDecrypt.addEventListener('click',e =>{
     e.preventDefault();
-    // btnDecrypt.classList.add("scale-up-center")
     try {
       validateMessage = checkRegex(message.value)
       if (validateMessage==false) {
@@ -127,7 +134,7 @@ btnDecrypt.addEventListener('click',e =>{
       }else{
 
         const result = getString('reverse').join(" "); 
-        console.log(result);   
+        
         renderText(result)  
       }  
     } catch (error) {
@@ -138,20 +145,19 @@ btnDecrypt.addEventListener('click',e =>{
 });
 
 
-
+//--boton copiar--
 btnCopy.addEventListener('click', e =>{
   e.preventDefault();
-  // btnCopy.classList.add("scale-up-center")
-  copyText();
+  try {
+    copyText();  
+  } catch (error) {
+    console.log("Empty Text");
+  }
+  
 });
 
   
 
 
-
-      
-
-
-
-
+})();
 

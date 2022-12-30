@@ -193,10 +193,8 @@ body{
 }
 
 .third{
-  /* position: relative; */
   position: relative;
-  /* top: 85.5%; */
-  
+
 }
 
 
@@ -306,8 +304,6 @@ footer{
 
       .main-container{
         display: flex;
-        /* margin: 10px 0 10px 0; */
-        /* padding: 0px 0 0 0; */
         width: 96%;
         flex-direction: column;
         justify-content: center;
